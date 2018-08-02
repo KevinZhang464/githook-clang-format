@@ -6,7 +6,9 @@ format_file() {
       BasedOnStyle: llvm,\
       ColumnLimit: 120,\
       KeepEmptyLinesAtTheStartOfBlocks: false,\
+      IndentCaseLabels: true,\
       IndentWidth: 4,\
+      ObjCBinPackProtocolList: Never,\
       ObjCBlockIndentWidth: 4,\
       ObjCSpaceAfterProperty: true,\
       ReflowComments: false,\
