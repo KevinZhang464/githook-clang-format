@@ -1,15 +1,17 @@
 #!/bin/bash
 
-STYLE=$(git config --get hooks.clangformat.style)
-if [ -n "${STYLE}" ] ; then
-  STYLEARG="-style=${STYLE}"
-else
-  STYLEARG=""
-fi
-
 format_file() {
   file="${1}"
-  clang-format -i ${STYLEARG} ${1}
+  clang-format -i -style="{\
+      BasedOnStyle: llvm,\
+      ColumnLimit: 120,\
+      KeepEmptyLinesAtTheStartOfBlocks: false,\
+      IndentWidth: 4,\
+      ObjCBlockIndentWidth: 4,\
+      ObjCSpaceAfterProperty: true,\
+      ReflowComments: false,\
+      SpacesInContainerLiterals: false\
+  }" ${1}
   git add ${1}
 }
 
@@ -23,3 +25,4 @@ case "${1}" in
     done
     ;;
 esac
+
