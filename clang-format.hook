@@ -13,8 +13,8 @@ format_file() {
       ObjCSpaceAfterProperty: true,\
       ReflowComments: false,\
       SpacesInContainerLiterals: false\
-  }" ${1}
-  git add ${1}
+  }" "${1}"
+  git add "${1}"
 }
 
 case "${1}" in
@@ -22,9 +22,10 @@ case "${1}" in
     echo "Runs clang-format on source files"
     ;;
   * )
-    for file in `git diff-index --cached --name-only HEAD | grep '^[^.]' | grep '\.[mh]$'` ; do
+    while read -r file ; do
+      echo "Formatting $file"
       format_file "${file}"
-    done
+    done < <(git diff-index --cached --name-only HEAD | grep '^[^.]' | grep '\.[mh]$')
     ;;
 esac
 
