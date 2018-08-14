@@ -23,8 +23,12 @@ case "${1}" in
     ;;
   * )
     while read -r file ; do
-      echo "Formatting $file"
-      format_file "${file}"
+      if [ ! -e "$file" ]; then
+        echo "Deleted $file"
+      else
+        echo "Formatting $file"
+        format_file "${file}"
+      fi
     done < <(git diff-index --cached --name-only HEAD | grep '^[^.]' | grep '\.[mh]$')
     ;;
 esac
