@@ -3,6 +3,7 @@
 format_file() {
   file="${1}"
   clang-format -i -style="{\
+      Language: ObjC,\
       BasedOnStyle: llvm,\
       ColumnLimit: 120,\
       KeepEmptyLinesAtTheStartOfBlocks: false,\
