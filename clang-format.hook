@@ -3,17 +3,17 @@
 format_file() {
   file="${1}"
   clang-format -i -style="{\
-      Language: ObjC,\
-      BasedOnStyle: llvm,\
-      ColumnLimit: 120,\
-      KeepEmptyLinesAtTheStartOfBlocks: false,\
-      IndentCaseLabels: true,\
-      IndentWidth: 4,\
-      ObjCBinPackProtocolList: Never,\
-      ObjCBlockIndentWidth: 4,\
-      ObjCSpaceAfterProperty: true,\
-      ReflowComments: false,\
-      SpacesInContainerLiterals: false\
+    Language: ObjC,\
+    BasedOnStyle: llvm,\
+    ColumnLimit: 120,\
+    KeepEmptyLinesAtTheStartOfBlocks: false,\
+    IndentCaseLabels: true,\
+    IndentWidth: 4,\
+    ObjCBinPackProtocolList: Never,\
+    ObjCBlockIndentWidth: 4,\
+    ObjCSpaceAfterProperty: true,\
+    ReflowComments: false,\
+    SpacesInContainerLiterals: false\
   }" "${1}"
   git add "${1}"
 }
